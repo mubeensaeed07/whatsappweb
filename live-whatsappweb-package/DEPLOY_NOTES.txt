@@ -1,0 +1,19 @@
+WHATSAPP DEPLOYMENT NOTES
+=========================
+
+1) Merge these files into your live project/module.
+2) Do NOT copy node_modules or .wwebjs_auth/.wwebjs_cache.
+3) Required Laravel env vars:
+   WHATSAPP_GATEWAY_URL=http://127.0.0.1:3001
+   WHATSAPP_GATEWAY_TOKEN=change-me
+   WHATSAPP_WEBHOOK_SECRET=change-this-secret
+4) Required gateway env vars:
+   PORT=3001
+   API_TOKEN=change-me
+   SESSION_ID=laravel-main
+   LARAVEL_WEBHOOK_URL=https://your-domain.com/api/whatsapp/webhook/incoming
+   LARAVEL_WEBHOOK_SECRET=change-this-secret
+5) After copy on live run:
+   php artisan migrate --force
+   php artisan config:clear
+   cd whatsapp-gateway && npm install && npm start
